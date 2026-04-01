@@ -363,7 +363,7 @@ public sealed class ZadaniaLinq
             .Select(x => new
             {
                 x.pr.Imie, x.pr.Nazwisko, Oceny = x.przedmioty
-                    .SelectMany(p => DaneUczelni.Zapisy.Where(z => z.PrzedmiotId == x.pr.Id && z.OcenaKoncowa.HasValue)
+                    .SelectMany(p => DaneUczelni.Zapisy.Where(z => z.PrzedmiotId == p.Id && z.OcenaKoncowa.HasValue)
                         .Select(z => z.OcenaKoncowa.Value))
             }).Select(x => $"{x.Imie} {x.Nazwisko} {x.Oceny.Average()}").ToList();
     }
